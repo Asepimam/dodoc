@@ -1,4 +1,6 @@
+import 'package:dodoc/src/routes/app_router.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 class SigninPage extends StatelessWidget {
   const SigninPage({super.key});
@@ -59,8 +61,22 @@ class SigninPage extends StatelessWidget {
                       Row(
                         mainAxisAlignment: MainAxisAlignment.end,
                         children: [
-                          Text('Forgot Password?',
-                              style: TextStyle(color: Colors.blue))
+                          TextButton(
+                            style: TextButton.styleFrom(
+                              padding: EdgeInsets.zero,
+                              overlayColor: Colors.transparent,
+                            ),
+                            onPressed: () {
+                              context.go(AppRouter.signIn.name);
+                            },
+                            child: Text(
+                              'Forgot Password?',
+                              style: TextStyle(
+                                color: Colors.blue,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                          ),
                         ],
                       ),
                       SizedBox(height: 20),
@@ -83,7 +99,19 @@ class SigninPage extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           Text('Don\'t have an account?'),
-                          Text('Sign Up', style: TextStyle(color: Colors.blue))
+                          TextButton(
+                            style: TextButton.styleFrom(
+                              padding: EdgeInsets.zero,
+                              overlayColor: Colors.transparent,
+                            ),
+                            onPressed: () {
+                              context.go(AppRouter.signUp.name);
+                            },
+                            child: Text('Sign Up',
+                                style: TextStyle(
+                                    color: Colors.blue,
+                                    fontWeight: FontWeight.bold)),
+                          ),
                         ],
                       )
                     ],

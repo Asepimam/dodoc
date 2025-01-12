@@ -1,4 +1,6 @@
+import 'package:dodoc/src/routes/app_router.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 class SignupPage extends StatelessWidget {
   const SignupPage({super.key});
@@ -14,6 +16,7 @@ class SignupPage extends StatelessWidget {
           child: Stack(
             children: [
               Center(
+                widthFactor: 100,
                 child: Image(
                   image: AssetImage('assets/images/logo.png'),
                   width: 430,
@@ -59,8 +62,19 @@ class SignupPage extends StatelessWidget {
                       Row(
                         mainAxisAlignment: MainAxisAlignment.end,
                         children: [
-                          Text('Forgot Password?',
-                              style: TextStyle(color: Colors.blue))
+                          TextButton(
+                            style: TextButton.styleFrom(
+                              padding: EdgeInsets.zero,
+                              overlayColor: Colors.transparent,
+                            ),
+                            onPressed: () {
+                              // context.go(AppRouter.forgotPassword.name);
+                            },
+                            child: Text('Forgot Password?',
+                                style: TextStyle(
+                                    color: Colors.blue,
+                                    fontWeight: FontWeight.bold)),
+                          ),
                         ],
                       ),
                       SizedBox(height: 20),
@@ -71,7 +85,7 @@ class SignupPage extends StatelessWidget {
                             color: Colors.blue,
                             borderRadius: BorderRadius.circular(10)),
                         child: Center(
-                          child: Text('Sign In',
+                          child: Text('Sign Up',
                               style: TextStyle(
                                   color: Colors.white,
                                   fontSize: 18,
@@ -82,8 +96,20 @@ class SignupPage extends StatelessWidget {
                       Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          Text('Don\'t have an account?'),
-                          Text('Sign Up', style: TextStyle(color: Colors.blue))
+                          Text('Already have an account?'),
+                          TextButton(
+                            style: TextButton.styleFrom(
+                              padding: EdgeInsets.zero,
+                              overlayColor: Colors.transparent,
+                            ),
+                            onPressed: () {
+                              context.go(AppRouter.signIn.name);
+                            },
+                            child: Text('Sign In',
+                                style: TextStyle(
+                                    color: Colors.blue,
+                                    fontWeight: FontWeight.bold)),
+                          ),
                         ],
                       )
                     ],
